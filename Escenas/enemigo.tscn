@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Escenas/enemigo.gd" type="Script" id=1]
+[ext_resource path="res://enemigo.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 39.7949, 44.7782 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 28.0907, 21.3699 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40.7702, 23.3206 )
+
+[node name="enemigo" type="KinematicBody2D"]
+scale = Vector2( 1.10737, 1.10737 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="cabeza" type="Area2D" parent="." groups=[
+"cabeza",
+]]
+
+[node name="cabeza_c" type="CollisionShape2D" parent="cabeza"]
+position = Vector2( -2.1433, -27.4961 )
+shape = SubResource( 2 )
+
+[node name="cabeza_s" type="Sprite" parent="cabeza"]
+texture = ExtResource( 2 )
+
+[node name="cuerpo" type="Area2D" parent="." groups=[
+"enemigo",
+]]
+
+[node name="cuerpo_c" type="CollisionShape2D" parent="cuerpo"]
+position = Vector2( -1.52588e-005, 21.4577 )
+scale = Vector2( 1.1585, 1.10893 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="cabeza" to="." method="_on_cabeza_area_entered"]
