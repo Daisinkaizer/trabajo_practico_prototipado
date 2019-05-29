@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Escenas/mundo.gd" type="Script" id=1]
+[ext_resource path="res://fondo-juego-pixeles-8-bits-suelo-panorama-cielo-nublado_53562-3520.jpg" type="Texture" id=2]
+[ext_resource path="res://Escenas/enemigo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Escenas/personaje.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Escenas/generador.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/suelo.tscn" type="PackedScene" id=6]
+
+[node name="mundo" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="fondo" type="Sprite" parent="."]
+position = Vector2( 639.112, 363.269 )
+scale = Vector2( 2.07392, 1.31057 )
+texture = ExtResource( 2 )
+
+[node name="enemigo" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 1117.44, -108.502 )
+scale = Vector2( 1.71405, 1.71405 )
+
+[node name="personaje" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+position = Vector2( 86.7559, 447.106 )
+scale = Vector2( 3.70103, 3.70103 )
+
+[node name="generador" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1333.71, 523.404 )
+
+[node name="suelo" parent="." instance=ExtResource( 6 )]
+position = Vector2( 15.8667, -95.2004 )
+
+
+[editable path="enemigo"]
+
+[editable path="personaje"]
