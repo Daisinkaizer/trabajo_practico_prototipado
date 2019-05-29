@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Escenas/personaje.gd" type="Script" id=1]
+[ext_resource path="res://Sin título.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 7.53376, 17.4944 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10.2816, 14.4135 )
+
+[sub_resource type="RayShape2D" id=3]
+length = 13.5798
+
+[node name="personaje" type="KinematicBody2D"]
+scale = Vector2( 0.806634, 0.806634 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.0586, 5.50549 )
+scale = Vector2( -1.21443, 1.28009 )
+shape = SubResource( 4 )
+
+[node name="cuerpo" type="Area2D" parent="." groups=[
+"jugador",
+]]
+
+[node name="cuerpo_s" type="Sprite" parent="cuerpo"]
+position = Vector2( 2.8547, 5.81134 )
+scale = Vector2( 0.796093, 0.796093 )
+texture = ExtResource( 2 )
+
+[node name="cuerpo_c" type="CollisionShape2D" parent="cuerpo"]
+position = Vector2( 3.46641, 1.7272 )
+scale = Vector2( 1.29047, 1.29874 )
+shape = SubResource( 5 )
+
+[node name="pies" type="Area2D" parent="." groups=[
+"pies",
+]]
+
+[node name="pies2" type="CollisionShape2D" parent="pies"]
+position = Vector2( 2.44688, 21.4582 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="cuerpo" to="." method="_on_cuerpo_area_entered"]
